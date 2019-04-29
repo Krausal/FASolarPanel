@@ -2,46 +2,36 @@
  *  Informatik 2 - Demo 1
  *  (c) 2019-03-15, Norbert Grotz
 */
-int A0;
-int D1;
-int D2;
-int D3;
+Sensorwert=0;
+pinMode(D1, OUTPUT);
+pinMode(D2, OUTPUT);
+pinMode(D3, OUTPUT);
+
+double W1=0;
+double W2=0;
+double W3=0;
+double W4=0;
+double W5=0;
+
 class cUAblesen {
  public:
-   double W1;
-   double W2;
-   double W3;
-   double W4;
-   double W5;
+  int D1=LOW;
+  int D2=LOW;
+  int D3=LOW;
 
-   cUAblesen(A0, D1, D2, D3) {
-    W1=0;
-    W2=0;
-    W3=0;
-    W4=0;
-    W5=0;
-    D1=LOW;
-    D2=LOW;
-    D3=LOW;
+   cUAblesen(D1, D2, D3) {
+    Sensorwert=analogRead(A0);
+    return Sensorwert;
    }
-   void update() {
-    W1=A0;
-    D1=HIGH;
-    W2=A0;
-    D2=HIGH;
-    D1=LOW;
-    W3=A0;
-    D3=HIGH;
-    D2=LOW;
-    W4=A0;
-    D1=HIGH;
-    W5=A0;
-    delay(10000000)
-   }
-
-  
-    
 };
+
+W1=cUAblesen(0, 0, 0);
+W2=cUAblesen(0, 0, 1);
+W3=cUAblesen(0, 1, 0);
+W4=cUAblesen(1, 0, 0);
+W5=cUAblesen(1, 0, 1);
+
+
 
 void setup() {
  
